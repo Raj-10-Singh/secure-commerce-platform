@@ -1,8 +1,27 @@
 const express = require('express');
 const router = express.Router();
+const {IsLoggedin} = require("../middleware/IsLoggedin");
+const upload = require("../config/multer-config");
+const productModel = require("../models/product-model");
 
-router.get('/',(req,res)=>{
-    res.send('its working');
+router.post('/create',upload.single("image"),IsLoggedin,async(req,res)=>{
+    try{
+         let {image, name, price,discount,bgcolor,panelcolor,textcolor} = req.body;
+        const product = await productModel.create({
+        image: req.file.buffer,
+        name,
+        price,
+        discount,
+        bgcolor,
+        panelcolor,
+        textcolor
+    })
+    req.flash("succes","product created successfully");
+    res.redirect("/owner/admin");
+    }
+    catch(err){
+        res.send("err.message");
+    }
 })
 
 module.exports=router;

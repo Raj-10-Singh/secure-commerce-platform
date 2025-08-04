@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white p-8 rounded-xl shadow-md w-full max-w-lg">
+        <h2 class="text-2xl font-bold text-center mb-6">Owner Registration</h2>
+
+        <% if (error && error.length > 0) { %>
+            <div class="mb-4 bg-red-100 text-red-700 px-4 py-2 rounded">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <form action="/owner/register" method="POST" enctype="multipart/form-data" class="space-y-4">
+            <div>
+                <label>Full Name</label>
+                <input type="text" name="fullname" minlength="3" required
+                       class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label>Email</label>
+                <input type="email" name="email" required
+                       class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label>Password</label>
+                <input type="password" name="password" required
+                       class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label>GSTIN</label>
+                <input type="text" name="gstin"
+                       class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label>Upload Picture</label>
+                <input type="file" name="picture"
+                       class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <button type="submit"
+                    class="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700">Register</button>
+        </form>
+        <p class="text-sm text-center mt-4">
+            Already registered? <a href="/owner/login" class="text-blue-600 hover:underline">Login here</a>
+        </p>
+    </div>
+</body>
+</html>

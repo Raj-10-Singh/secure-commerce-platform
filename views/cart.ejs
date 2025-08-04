@@ -1,0 +1,75 @@
+<%- include('./partials/header') %>
+
+<% if (success && success.length > 0) { %>
+    <div id="flash-success" class="fixed top-5 left-1/2 transform -translate-x-1/2 
+        bg-green-500 text-white px-5 py-3 rounded shadow-lg z-50 text-center transition-opacity duration-500">
+        <%= success %>
+    </div>
+<% } %>
+
+<% if (error && error.length > 0) { %>
+    <div id="flash-error" class="fixed top-5 left-1/2 transform -translate-x-1/2 
+        bg-red-500 text-white px-5 py-3 rounded shadow-lg z-50 text-center transition-opacity duration-500">
+        <%= error %>
+    </div>
+<% } %>
+
+<div class="w-full min-h-screen flex flex-wrap items-start px-20 py-20 gap-10">
+    <% let totalMRP = 0; %>
+    <% cartItems.forEach((item, index) => { %>
+        <% totalMRP += item.price * item.quantity; %>
+        <div class="w-[30%] rounded-md overflow-hidden shadow-md bg-gray-100">
+            <div class="w-48 h-80 bg-cover bg-center" style="background-image: url('<%= item.image %>')"></div>
+            <div class="w-full flex justify-between px-5 py-4">
+                <h3 class="text-2xl"><%= item.name %></h3>
+                <div class="flex items-center gap-2">
+                    <!-- You can make these buttons submit forms or use AJAX later -->
+                    <form method="POST" action="/cart/increase/<%= item.id %>">
+                        <button type="submit" class="w-7 h-7 bg-white flex rounded-full items-center justify-center ri-add-line"></button>
+                    </form>
+                    <div class="px-2 py-1 rounded-md bg-white text-black"><%= item.quantity %></div>
+                    <form method="POST" action="/cart/decrease/<%= item.id %>">
+                        <button type="submit" class="w-7 h-7 bg-white flex rounded-full items-center justify-center ri-subtract-line"></button>
+                    </form>
+                </div>
+            </div>
+            <div class="flex items-center justify-between px-5 py-3">
+                <h4 class="text-lg">Net Total</h4>
+                <h2 class="text-lg">₹ <%= item.price * item.quantity %></h2>
+            </div>
+        </div>
+    <% }) %>
+
+    <div class="w-[65%]">
+        <h3 class="text-xl">Price Breakdown</h3>
+        <div class="px-10 mt-5">
+            <div class="flex mt-2">
+                <h4 class="w-1/3">Total MRP</h4>
+                <h4>₹ <%= totalMRP %></h4>
+            </div>
+            <div class="flex mt-2">
+                <h4 class="w-1/3">Discount on MRP</h4>
+                <h4>₹ <%= discount %></h4>
+            </div>
+            <div class="flex mt-2">
+                <h4 class="w-1/3">Platform Fee</h4>
+                <h4>₹ 20</h4>
+            </div>
+            <div class="flex mt-2">
+                <h4 class="w-1/3">Shipping Fee</h4>
+                <h4>FREE</h4>
+            </div>
+        </div>
+        <div class="w-full h-[1px] bg-black mt-10"></div>
+        <div class="flex mt-5">
+            <h3 class="w-1/3 text-xl">Total Amount</h3>
+            <h3 class="font-semibold text-xl text-green-600">₹ <%= totalMRP - discount + 20 %></h3>
+        </div>
+
+        <form method="POST" action="/checkout">
+            <button type="submit" class="mt-5 px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700">Proceed to Checkout</button>
+        </form>
+    </div>
+</div>
+
+<%- include('./partials/footer') %>

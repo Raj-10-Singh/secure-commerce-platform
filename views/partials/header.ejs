@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-['helvetica_now_display']">
+    <% if (typeof showNavbar === 'undefined' || showNavbar) { %>
+    <nav class="w-full fixed top-0 left-0 bg-white flex justify-between items-center px-5 py-3 shadow-md z-50">
+        <!-- Top left logo or link -->
+        <h3 class="text-xl font-bold text-black">Scatch</h3>
+
+        <!-- Right side links -->
+        <div class="flex gap-5">
+            <a class="text-black hover:underline" href="/shop">Shop</a>
+            <a class="text-black hover:underline" href="/cart">Cart</a>
+            <a class="text-black hover:underline" href="/owner/login">Admin</a>
+            <a class="text-red-500 hover:underline" href="/user/logout">Logout</a>
+        </div>
+    </nav>
+    <% } %>
+</body>
