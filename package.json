@@ -1,26 +1,27 @@
 {
-  "name": "e-commerce-website",
+  "name": "e-commerce-backend",
   "version": "1.0.0",
+  "description": "Secure and scalable e-commerce backend using Node.js, Express, and MongoDB",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Raj Singh",
   "license": "ISC",
-  "description": "",
   "dependencies": {
-    "bcrypt": "^6.0.0",
-    "config": "^4.0.1",
+    "bcrypt": "^5.1.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.7",
-    "dotenv": "^17.2.0",
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
-    "express": "^5.1.0",
+    "express": "^4.19.2",
     "express-session": "^1.18.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.16.3",
-    "multer": "^2.0.2",
-    "path": "^0.12.7"
+    "multer": "^1.4.5-lts.1"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
