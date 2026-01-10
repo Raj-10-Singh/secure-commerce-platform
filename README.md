@@ -2,6 +2,8 @@
 
 A production-ready e-commerce backend built with Node.js and Express.js, focused on secure authentication, role-based authorization, and scalable REST API design. This backend is designed to serve real-world web and mobile e-commerce applications.
 
+## 🚀 Live Demo
+🔗 https://secure-commerce-platform.onrender.com/
 
 ## 📌 Problem Statement
 Many beginner level e-commerce backends lack proper security practices, authorization layers, and scalable architecture.  
